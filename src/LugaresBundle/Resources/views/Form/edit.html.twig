@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1> Editar Lugar </h1>
+
+                {{ form_start(lugaresForm) }}
+                {{ form_widget(lugaresForm) }}
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a class="btn btn-primary" href="{{ path('lugares_list') }}">Regresar</a>
+                {{ form_end(lugaresForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

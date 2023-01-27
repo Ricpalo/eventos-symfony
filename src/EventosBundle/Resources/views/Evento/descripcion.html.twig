@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Descripcion de Evento {% endblock %}
+
+{% block body %}
+    {% if descripcion.0 %}
+        <h1>{{ descripcion.0.nombre }}</h1>
+
+        {% if descripcion.0.invitados %}
+            <h1>{{ descripcion.0.invitados.0.nombre }}</h1>
+        {% endif %}
+
+        {#    <h1>{{ descripcion.0.eventosLugares.0.nombre }}</h1>#}
+        {#    <h1>{{ descripcion.0.eventosLugares.1.nombre }}</h1>#}
+    {% else %}
+        <h1>{{ evento.nombre }}</h1>
+    {% endif %}
+{% endblock %}

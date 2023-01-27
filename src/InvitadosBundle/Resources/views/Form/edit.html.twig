@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1> Editar Invitado </h1>
+
+                {{ form_start(invitadosForm) }}
+                {{ form_widget(invitadosForm) }}
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a class="btn btn-primary" href="{{ path('invitados_list') }}">Regresar</a>
+                {{ form_end(invitadosForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

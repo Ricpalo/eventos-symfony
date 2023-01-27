@@ -1,0 +1,4 @@
+LugaresBundle\Entity\Lugares:
+  lugar_{1..10}:
+    nombre: <name()>
+    direccion: <address()>

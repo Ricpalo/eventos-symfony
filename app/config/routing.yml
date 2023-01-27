@@ -1,0 +1,18 @@
+invitados:
+    resource: "@InvitadosBundle/Controller/"
+    type:     annotation
+    prefix:   /invitados
+
+lugares:
+    resource: "@LugaresBundle/Controller/"
+    type:     annotation
+    prefix:   /lugares
+
+eventos:
+    resource: "@EventosBundle/Controller/"
+    type:     annotation
+    prefix:   /eventos
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
