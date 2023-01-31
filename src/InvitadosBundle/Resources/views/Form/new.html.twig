@@ -4,15 +4,19 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h1> Nuevo Invitado </h1>
+                <h1> {{ 'form.guests.new'|trans }} </h1>
 
                 {{ form_start(invitadosForm) }}
                     {{ form_widget(invitadosForm) }}
 
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                <a class="btn btn-primary" href="{{ path('invitados_list') }}">Regresar</a>
+                    <button type="submit" class="btn btn-primary">{{ 'form.save'|trans }}</button>
+                <a class="btn btn-primary" href="{{ path('invitados_list') }}">{{ 'form.back'|trans }}</a>
                 {{ form_end(invitadosForm) }}
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

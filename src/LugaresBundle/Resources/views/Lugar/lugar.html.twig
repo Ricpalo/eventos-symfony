@@ -6,3 +6,7 @@
     <h1>{{ lugar.nombre }}</h1>
     <h2>Dirección: {{ lugar.direccion }}</h2>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

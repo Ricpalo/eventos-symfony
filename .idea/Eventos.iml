@@ -58,6 +58,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/nelmio/alice" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kriswallsmith/assetic" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/assetic-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/twitter/bootstrap" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/robloach/component-installer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/components/jquery" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

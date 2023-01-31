@@ -1,0 +1,19 @@
+lugares_list:
+  path: /lugares
+  controller: LugaresBundle\Controller\LugaresController::listAction
+
+lugar_new:
+  path: /lugares/new
+  controller: LugaresBundle\Controller\LugaresController::newLugar
+
+lugar_update:
+  path: /lugares/update/{id}
+  controller: LugaresBundle\Controller\LugaresController::updateLugar
+
+lugar_delete:
+  path: /lugares/delete/{id}
+  controller: LugaresBundle\Controller\LugaresController::deleteLugar
+
+lugar_show:
+  path: /lugares/{nombreLugar}
+  controller: LugaresBundle\Controller\LugaresController::showLugar

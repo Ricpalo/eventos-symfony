@@ -5,6 +5,7 @@ imports:
     - { resource: "@EventosBundle/Resources/config/services.yml" }
     - { resource: "@LugaresBundle/Resources/config/services.yml" }
     - { resource: "@InvitadosBundle/Resources/config/services.yml" }
+    - { resource: packages/translation.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -13,7 +14,8 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator:
+      { fallbacks: [ '%locale%' ] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -42,6 +44,29 @@ twig:
     strict_variables: '%kernel.debug%'
     form_themes:
         - bootstrap_3_layout.html.twig
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    bundle:
+        - AppBundle
+    filters:
+        cssrewrite: ~
+        jsqueeze: ~
+        scssphp: ~
+    assets:
+        bootstrap_css:
+            inputs:
+                - '%kernel.root_dir%/../web/css/bootstrap.min.css'
+                - '%kernel.root_dir%/../web/css/dataTables.min.css'
+        bootstrap_js:
+            inputs:
+                - '%kernel.root_dir%/../web/js/bootstrap.min.js'
+                - '%kernel.root_dir%/../web/js/bootstrap.bundle.js'
+                - '%kernel.root_dir%/../web/js/datatables.min.js'
+        jquery:
+            inputs:
+                - '%kernel.root_dir%/../node_modules/jquery/dist/jquery.js'
 
 # Doctrine Configuration
 doctrine:
@@ -81,9 +106,3 @@ doctrine_cache:
     providers:
         my_markdown_cache:
             type: file_system
-
-assetic:
-    debug:          '%kernel.debug%'
-    use_controller: '%kernel.debug%'
-    filters:
-        cssrewrite: ~

@@ -36,13 +36,13 @@ class Eventos
     private $invitados;
 
     /**
-     * @ORM\ManyToMany(targetEntity="LugaresBundle\Entity\Lugares", inversedBy="lugaresEventos")
+     * @ORM\ManyToMany(targetEntity="LugaresBundle\Entity\Lugares", inversedBy="lugaresEventos", fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="eventos_lugares")
      */
     private $eventosLugares;
 
     /**
-     * @return ArrayCollection
+     * @return ArrayCollection|Lugares[]
      */
     public function getEventosLugares()
     {
@@ -141,5 +141,9 @@ class Eventos
         }
 
         $this->eventosLugares[] = $lugar;
+    }
+
+    public function removeEventosLugares(Lugares $lugares) {
+        $this->eventosLugares->removeElement($lugares);
     }
 }

@@ -2,17 +2,43 @@
 
 {% block title %} Descripcion de Evento {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
-    {% if descripcion.0 %}
-        <h1>{{ descripcion.0.nombre }}</h1>
+    <h1>Nombre de Evento: {{ descripcion.0.nombre }}</h1>
 
-        {% if descripcion.0.invitados %}
-            <h1>{{ descripcion.0.invitados.0.nombre }}</h1>
-        {% endif %}
-
-        {#    <h1>{{ descripcion.0.eventosLugares.0.nombre }}</h1>#}
-        {#    <h1>{{ descripcion.0.eventosLugares.1.nombre }}</h1>#}
+    <h2>Lugares:</h2>
+    {% if descripcion.0.eventosLugares is empty %}
+        <h3>Aún no hay lugares</h3>
     {% else %}
-        <h1>{{ evento.nombre }}</h1>
+        {% for lugar in descripcion.0.eventosLugares %}
+            <div id="item">
+                <h3>{{ lugar.nombre }}</h3>
+                <a
+                   class="btn btn-danger delete"
+                   data-url="{{ path('evento_delete_eventoLugar', {
+                       'evento': descripcion.0.id,
+                       'lugar': lugar.id}) }}"
+                >Eliminar Lugar</a>
+            </div>
+        {% endfor %}
     {% endif %}
+
+    <h2>Invitados que asistirán:</h2>
+
+    {% if descripcion.0.invitados is empty %}
+        <h3>Aún no hay invitados</h3>
+    {% else %}
+        {% for invitado in descripcion.0.invitados %}
+            <h3>{{ invitado.nombre }}</h3>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ include('ajax.html.twig') }}
 {% endblock %}

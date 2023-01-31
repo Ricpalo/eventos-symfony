@@ -4,15 +4,19 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h1> Editar Lugar </h1>
+                <h1> {{ 'form.places.edit'|trans }} </h1>
 
                 {{ form_start(lugaresForm) }}
                 {{ form_widget(lugaresForm) }}
 
-                <button type="submit" class="btn btn-primary">Guardar</button>
-                <a class="btn btn-primary" href="{{ path('lugares_list') }}">Regresar</a>
+                <button type="submit" class="btn btn-primary">{{ 'form.save'|trans }}</button>
+                <a class="btn btn-primary" href="{{ path('lugares_list') }}">{{ 'form.back'|trans }}</a>
                 {{ form_end(lugaresForm) }}
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

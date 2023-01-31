@@ -1,0 +1,27 @@
+eventos_list:
+    path: /eventos
+    controller: EventosBundle\Controller\EventosController::indexAction
+
+evento_new:
+    path: /eventos/new
+    controller: EventosBundle\Controller\EventosController::newEvento
+
+evento_update:
+    path: /eventos/update/{id}
+    controller: EventosBundle\Controller\EventosController::updateEvento
+
+evento_delete:
+    path: /eventos/delete/{id}
+    controller: EventosBundle\Controller\EventosController::deleteEvento
+
+evento_show:
+    path: /eventos/{nombreEvento}
+    controller: EventosBundle\Controller\EventosController::showEvento
+
+evento_description:
+    path: /eventos/descripcion/{id}
+    controller: EventosBundle\Controller\EventosController::showDescripcionEvento
+
+evento_delete_eventoLugar:
+    path: /eventos/evento/{evento}/lugar/{lugar}
+    controller: EventosBundle\Controller\EventosController::removeEventoLugar

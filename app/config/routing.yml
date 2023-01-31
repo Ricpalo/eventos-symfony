@@ -1,18 +1,11 @@
+eventos:
+    resource: '@EventosBundle/Resources/config/routing.yml'
+
 invitados:
-    resource: "@InvitadosBundle/Controller/"
-    type:     annotation
-    prefix:   /invitados
+    resource: '@InvitadosBundle/Resources/config/routing.yml'
 
 lugares:
-    resource: "@LugaresBundle/Controller/"
-    type:     annotation
-    prefix:   /lugares
-
-eventos:
-    resource: "@EventosBundle/Controller/"
-    type:     annotation
-    prefix:   /eventos
+    resource: '@LugaresBundle/Resources/config/routing.yml'
 
 app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+    resource: '@AppBundle/Resources/config/routing.yml'

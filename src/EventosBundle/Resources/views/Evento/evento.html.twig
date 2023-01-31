@@ -2,6 +2,14 @@
 
 {% block title %} Evento:{{ evento.nombre }} {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
     <h1>{{ evento.nombre }}</h1>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

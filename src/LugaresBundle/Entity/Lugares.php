@@ -4,6 +4,7 @@ namespace LugaresBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use EventosBundle\Entity\Eventos;
 
 /**
  * Lugares
@@ -42,7 +43,7 @@ class Lugares
     private $lugaresEventos;
 
     /**
-     * @return ArrayCollection
+     * @return ArrayCollection|Eventos[]
      */
     public function getLugaresEventos()
     {
@@ -121,5 +122,17 @@ class Lugares
 
     public function __toString() {
         return $this->getNombre();
+    }
+
+    public function addLugaresEventos(Eventos $eventos) {
+        if ( $this->lugaresEventos->contains($eventos)) {
+            return;
+        }
+
+        $this->lugaresEventos[] = $eventos;
+    }
+
+    public function removedLugaresEventos(Eventos $eventos) {
+        $this->lugaresEventos->removeElement($eventos);
     }
 }

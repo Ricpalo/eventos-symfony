@@ -1,0 +1,9 @@
+nav.title: Navigation
+nav.home: Hauptseite
+nav.events: Veranstaltungen
+nav.guests: Gaste
+nav.places: Setzt
+table.events.name: 'Veranstaltungename'
+table.events.add: 'Ereignis Hinzufugen'
+table.events.description: 'Beschreibung der Ereignisse'
+table.events.button: 'Eventbeschreibung'

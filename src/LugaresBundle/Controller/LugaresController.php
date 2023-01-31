@@ -5,16 +5,10 @@ namespace LugaresBundle\Controller;
 use LugaresBundle\Entity\Lugares;
 use LugaresBundle\Form\LugaresFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 
 class LugaresController extends Controller
 {
-    /**
-     * @Route("/get", name="lugares_list")
-     * @Method({"GET"})
-     */
     public function listAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $lugares = $em->getRepository('LugaresBundle:Lugares')
@@ -25,9 +19,6 @@ class LugaresController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/new", name="new_lugar")
-     */
     public function newLugar(Request $request) {
         $form = $this->createForm(LugaresFormType::class);
 
@@ -50,9 +41,6 @@ class LugaresController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/update/{id}", name="update_lugar")
-     */
     public function updateLugar(Request $request, Lugares $lugar) {
         $form = $this->createForm(LugaresFormType::class, $lugar);
 
@@ -75,9 +63,6 @@ class LugaresController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/{nombreLugar}", name="mostrar_lugar")
-     */
     public function showLugar($nombreLugar) {
         $em = $this->getDoctrine()->getManager();
         $lugar = $em->getRepository('LugaresBundle:Lugares')
@@ -92,9 +77,6 @@ class LugaresController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/delete/{id}", name="delete_lugar")
-     */
     public function deleteLugar($id) {
         $em = $this->getDoctrine()->getManager();
         $lugar = $em->getRepository('LugaresBundle:Lugares')->find($id);

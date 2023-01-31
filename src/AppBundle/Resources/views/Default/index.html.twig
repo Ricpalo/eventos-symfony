@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
-
 {% block title %} Principal {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 
 {% block body %}
     {{ include('menu.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}

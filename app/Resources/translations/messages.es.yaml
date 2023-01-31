@@ -1,0 +1,36 @@
+nav.title: Navegación
+nav.home: 'Página Principal'
+nav.events: Eventos
+nav.guests: Invitados
+nav.places: Lugares
+
+table.events.name: 'Nombre de Evento'
+table.events.add: 'Agregar Evento'
+table.events.description: 'Descripción de Eventos'
+table.events.button: 'Descripción de Evento'
+
+table.places.name: 'Nombre del Lugar'
+table.places.add: 'Agregar Lugar'
+table.places.address: 'Dirección del Lugar'
+
+table.guests.name: 'Nombre del Invitado'
+table.guests.add: 'Agregar Invitado'
+table.guests.event: 'Evento que atenderá el invitado'
+
+form.events.new: 'Nuevo Evento'
+form.events.edit: 'Editar Evento'
+form.events.name: 'Nombre del Evento'
+form.events.places: 'Escoge los Lugares'
+
+form.guests.new: 'Nuevo Invitado'
+form.guests.edit: 'Editar Invitado'
+form.guests.name: 'Nombre del Invitado'
+form.guests.event: 'Escoge el evento al que asistirá'
+
+form.places.new: 'Nuevo Lugar'
+form.places.edit: 'Editar Lugar'
+form.places.name: 'Nombre del Lugar'
+form.places.address: 'Dirección del Lugar'
+
+form.save: Guardar
+form.back: Regresar

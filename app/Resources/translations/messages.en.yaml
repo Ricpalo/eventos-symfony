@@ -1,0 +1,32 @@
+nav.title: Navigation
+nav.home: Home
+nav.events: Events
+nav.guests: Guests
+nav.places: Places
+table.events.name: 'Event Name'
+table.events.add: 'Add Event'
+table.events.description: 'Events Description'
+table.events.button: 'Event Description'
+table.places.name: 'Place Name'
+table.places.add: 'Add Place'
+table.places.address: 'Place Address'
+table.guests.name: 'Guest Name'
+table.guests.add: 'Add Guest'
+table.guests.event: 'Event that guest will attend'
+form.events.new: 'New Event'
+form.events.edit: 'Edit Event'
+form.events.name: 'Event Name'
+form.events.places: 'Choose the places'
+
+form.guests.new: 'New Guest'
+form.guests.edit: 'Edit Guest'
+form.guests.name: 'Guest Name'
+form.guests.event: 'Event the guest will attend'
+
+form.places.new: 'New Place'
+form.places.edit: 'Edit Place'
+form.places.name: 'Place Name'
+form.places.address: 'Place Address'
+
+form.save: Save
+form.back: Back

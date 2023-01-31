@@ -1,0 +1,20 @@
+invitados_list:
+  path: /invitados
+  controller: InvitadosBundle\Controller\InvitadosController::listAction
+
+invitado_new:
+  path: /invitados/new
+  controller: InvitadosBundle\Controller\InvitadosController::newInvitado
+
+invitado_update:
+  path: /invitados/update/{id}
+  controller: InvitadosBundle\Controller\InvitadosController::updateInvitado
+
+invitado_delete:
+  path: /invitados/delete/{id}
+  controller: InvitadosBundle\Controller\InvitadosController::deleteInvitado
+
+invitado_show:
+  path: /invitados/{nombreInvitado}
+  controller: InvitadosBundle\Controller\InvitadosController::showInvitado
+

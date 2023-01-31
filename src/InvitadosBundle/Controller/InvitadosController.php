@@ -4,17 +4,11 @@ namespace InvitadosBundle\Controller;
 
 use InvitadosBundle\Form\InvitadosFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use InvitadosBundle\Entity\Invitados;
 
 class InvitadosController extends Controller
 {
-    /**
-     * @Route("/get", name="invitados_list")
-     * @Method({"GET"})
-     */
     public function listAction(){
         $em = $this->getDoctrine()->getManager();
         $invitados = $em->getRepository('InvitadosBundle:Invitados')
@@ -25,9 +19,6 @@ class InvitadosController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/new", name="new_invitado")
-     */
     public function newInvitado(Request $request) {
         $form = $this->createForm(InvitadosFormType::class);
 
@@ -50,9 +41,6 @@ class InvitadosController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/update/{id}", name="update_invitado")
-     */
     public function updateInvitado(Request $request, Invitados $invitado) {
         $form = $this->createForm(InvitadosFormType::class, $invitado);
 
@@ -75,9 +63,6 @@ class InvitadosController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/{nombreInvitado}", name="mostrar_invitado")
-     */
     public function showInvitado($nombreInvitado){
         $em = $this->getDoctrine()->getManager();
         $invitado = $em->getRepository('InvitadosBundle:Invitados')
@@ -92,9 +77,6 @@ class InvitadosController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/delete/{id}", name="delete_invitado")
-     */
     public function deleteInvitado($id) {
         $em = $this->getDoctrine()->getManager();
         $invitado = $em->getRepository('InvitadosBundle:Invitados')->find($id);

@@ -4,20 +4,13 @@ namespace EventosBundle\Controller;
 
 use EventosBundle\Entity\Eventos;
 use EventosBundle\Form\EventosFormType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class EventosController extends Controller
 {
-    /**
-     * @Route("/get", name="list_eventos")
-     * @Method({"GET"})
-     */
-
-    public function getEventos(Request $request) {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $eventos = $em->getRepository('EventosBundle:Eventos')
             ->findAll();
@@ -27,35 +20,6 @@ class EventosController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/evento/ajax")
-     */
-    public function ajaxAction(Request $request) {
-        $eventos = $this->getDoctrine()
-            ->getRepository('EventosBundle:Eventos')
-            ->findAll();
-
-        if ($request->isXmlHttpRequest() || $request->query->get('showJson') == 1) {
-            $jsonData = array();
-            $idx = 0;
-
-            foreach ($eventos as $evento) {
-                $temp = array(
-                    'nombre' => $evento->getName()
-                );
-
-                $jsonData[$idx++] = temp;
-            }
-
-            return new JsonResponse($jsonData);
-        } else {
-            return $this->render('EventosBundle:Default:index.html.twig');
-        }
-    }
-
-    /**
-     * @Route("/new", name="new_evento")
-     */
     public function newEvento(Request $request) {
         $form = $this->createForm(EventosFormType::class);
 
@@ -65,12 +29,13 @@ class EventosController extends Controller
             $evento = $form->getData();
 
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($evento);
             $em->flush();
 
             $this->addFlash('success', 'Evento insertado correctamente');
 
-            return $this->redirectToRoute('list_eventos');
+            return $this->redirectToRoute('eventos_list');
         }
 
         return $this->render('@Eventos/Form/new.html.twig', [
@@ -78,9 +43,6 @@ class EventosController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/update/{id}", name="update_evento")
-     */
     public function updateEvento(Request $request, Eventos $evento) {
         $form = $this->createForm(EventosFormType::class, $evento);
 
@@ -95,7 +57,7 @@ class EventosController extends Controller
 
             $this->addFlash('success', 'Evento editado correctamente');
 
-            return $this->redirectToRoute('list_eventos');
+            return $this->redirectToRoute('eventos_list');
         }
 
         return $this->render('@Eventos/Form/edit.html.twig', [
@@ -103,9 +65,6 @@ class EventosController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/{nombreEvento}", name="mostrar_evento")
-     */
     public function showEvento($nombreEvento) {
         $em = $this->getDoctrine()->getManager();
         $evento = $em->getRepository('EventosBundle:Eventos')
@@ -120,9 +79,6 @@ class EventosController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/delete/{id}", name="delete_evento")
-     */
     public function deleteEvento($id) {
         $em = $this->getDoctrine()->getManager();
         $evento = $em->getRepository('EventosBundle:Eventos')->find($id);
@@ -138,12 +94,9 @@ class EventosController extends Controller
 
         $this->addFlash('success', 'Evento borrado correctamente');
 
-        return $this->redirectToRoute('list_eventos');
+        return $this->redirectToRoute('eventos_list');
     }
 
-    /**
-     * @Route("/descripcion/{id}", name="mostrar_evento_descripcion")
-     */
     public function showDescripcionEvento($id) {
         $em = $this->getDoctrine()->getManager();
         $evento = $em->getRepository('EventosBundle:Eventos')
@@ -162,5 +115,31 @@ class EventosController extends Controller
             'descripcion' => $descripcion,
             'evento' => $evento
         ]);
+    }
+
+    public function removeEventoLugar($evento, $lugar) {
+        $em = $this->getDoctrine()->getManager();
+
+        /** @var  $evento */
+        $evento = $em->getRepository('EventosBundle:Eventos')
+            ->find($evento);
+
+        if (!$evento) {
+            throw $this->createNotFoundException('Ese Evento No Existe');
+        }
+
+        /** @var  $lugar */
+        $lugar = $em->getRepository('LugaresBundle:Lugares')
+            ->find($lugar);
+
+        if (!$lugar) {
+            throw $this->createNotFoundException('Ese Lugar No Existe');
+        }
+
+        $evento->removeEventosLugares($lugar);
+        $em->persist($evento);
+        $em->flush();
+
+        return new Response(null, 204);
     }
 }
